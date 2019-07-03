@@ -1,17 +1,33 @@
-export class DinoLorem {
-  generateDino(paragraph, number) {
-    return new Promise(function(resolve, reject) {
-      let request = new XMLHttpRequest();
-       let url = `http://dinoipsum.herokuapp.com/api/?format=json&words=${number}&paragraphs=${paragraph}`;
-      request.onload = function() {
-        if (this.status === 200) {
-          resolve(request.response);
-        } else {
-          reject(Error(request.statusText));
-        }
-      };
-      request.open("GET", url, true);
-      request.send();
+import { DinoLorem } from './dino-lorem.js';
+import $ from 'jquery';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/styles.css';
+
+$(document).ready(function() {
+  $('.formOne').submit(function(event) {
+  event.preventDefault();
+
+  $('.output').text("");
+    let paragraph = $('#paragraph').val();
+    let number = $('#number').val();
+
+
+    let dinoLorem = new DinoLorem();
+    let promise = dinoLorem.generateDino(paragraph, number);
+
+
+    promise.then(function(response) {
+      let body = JSON.parse(response);
+
+      console.log(body);
+      body.forEach(function(paragraph) {
+        $('.output').append("<p>");
+        paragraph.forEach(function(word){
+          $('.output').append(word + " ");
+        })
+        $('.output').append("</p>");
+      });
     });
-  }
-}
+  });
+});
