@@ -1,25 +1,17 @@
-import $ from 'jquery';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/styles.css';
-// import './triangle.js';
-
-$(document).ready(function() {
-  $('.formOne').submit(function(event) {
-    event.preventDefault();
-
-    let xhr = new XMLHttpRequest();
-    console.log(xhr);
-
-    xhr.open('GET', 'http://dinoipsum.herokuapp.com/api/?format=html&words=10&paragraphs=3');
-    xhr.onload = function() {
-
-      if (this.status === 200) {
-        document.querySelector('.output').innerHTML = this.response;
-      } else {
-        console.log('Where did all the dinosaurs go?');
-      }
-    };
-    xhr.send();
-  });
-});
+export class DinoLorem {
+  generateDino(paragraph, number) {
+    return new Promise(function(resolve, reject) {
+      let request = new XMLHttpRequest();
+       let url = `http://dinoipsum.herokuapp.com/api/?format=json&words=${number}&paragraphs=${paragraph}`;
+      request.onload = function() {
+        if (this.status === 200) {
+          resolve(request.response);
+        } else {
+          reject(Error(request.statusText));
+        }
+      };
+      request.open("GET", url, true);
+      request.send();
+    });
+  }
+}

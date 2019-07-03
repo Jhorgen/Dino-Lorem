@@ -6,17 +6,20 @@
   </head>
   <body>
     <div class="container">
-      <form class="formOne" action="index.html" method="post">
+      <form class="formOne">
 
       <h1>Dino Lorem Ipsum</h1>
-      <label for="location">Enter a number:</label>
-      <input type="text">
-      <label for="">Paragraph</label>
-      <input type="text" name="" value=""><br>
-      <button type="submit" class="btn-success" id="generateDino">Get </button>
+      <label for="paragraph">Paragraph:</label>
+      <input id="paragraph" type="number">
+
+      <label for="number">Number:</label>
+      <input id="number" type="number"><br>
+      <button type="submit" class="btn-success">Submit</button>
 
     </form>
-    <div class="output"></div>
+    <div class="output">
+    </div>
+    <p id="errors"></p>
     </div>
   </body>
 </html>

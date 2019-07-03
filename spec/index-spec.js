@@ -1,11 +1,5 @@
 // import { Triangle } from './../src/triangle.js';
 //
-// describe('Triangle', function() {
-//
-//   it('should correctly determine if a triangle is equilateral', function() {
-//     var triangle = new Triangle(3,3,3)
-//     expect(triangle.checkType()).toEqual("an equilateral triangle");
-//   });
 //
 //   it('should correctly determine whether three lengths can be made into a triangle', function() {
 //     var notTriangle = new Triangle(3,9,22);
@@ -23,3 +17,12 @@
 //   });
 //
 // });
+
+import { xhr.onload } from ./../src/index.js
+
+describe('xhr.onload', function() {
+
+  it('should correctly determine if the API is working', function() {
+    // var triangle = new Triangle(3,3,3)
+    expect(xhr.toEqual("XMLHttpRequest()");
+  });
